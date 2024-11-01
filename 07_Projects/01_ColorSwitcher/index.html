@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Switcher</title>
+    <style>
+        .buttons{
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            border: 2px solid white;
+        }
+        .heading1{
+            text-align: center;
+            font-size: 60px;
+            margin-bottom: 150px;
+            text-shadow: 0px 0px 10px cyan,
+                         0px 0px 20px cyan,
+                         0px 0px 40px cyan,
+                         0px 0px 80px cyan;
+        }
+        h2{
+            text-align: center;
+            font-size: 30px;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <h1 class="heading1">Color Switcher</h1>
+    <div class="elements" style="text-align: center;">
+        <button class="buttons" id="red"></button>
+        <button class="buttons" id="yellow"></button>
+        <button class="buttons" id="blue"></button>
+        <button class="buttons" id="green"></button>
+        <button class="buttons" id="cyan"></button>
+        <button class="buttons" id="#212121"></button>
+    </div>
+    <h2 class = "text">Click the above Buttons to  change the background color of the page.</h2>
+    <script src="scripts.js"></script>
+</body>
+</html>
