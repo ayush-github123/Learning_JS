@@ -1,0 +1,167 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissor">Scissor</button>
+    <p id="win">Total Wins: 0</p>
+    <p id="lose">Total Losses: 0</p>
+    <p id="tie">Total Ties: 0</p>
+
+    <script>
+        // Get the buttons
+        const rockButton = document.getElementById('rock');
+        const paperButton = document.getElementById('paper');
+        const scissorButton = document.getElementById('scissor');
+
+        let win = 0;
+        let lose = 0;
+        let tie = 0;
+
+        // Function to update the score display
+        function updateScores() {
+            document.getElementById('win').innerText = `Total Wins: ${win}`;
+            document.getElementById('lose').innerText = `Total Losses: ${lose}`;
+            document.getElementById('tie').innerText = `Total Ties: ${tie}`;
+        }
+
+        // Function to play the game logic
+        function playGame(playerChoice) {
+            // Generate computer choice: 1 - Rock, 2 - Paper, 3 - Scissors
+            const computerPick = Math.floor(Math.random() * 3) + 1;
+
+            // Logic to determine outcome
+            if (playerChoice === computerPick) {
+                alert("It's a tie!");
+                tie++;
+            } else if (
+                (playerChoice === 1 && computerPick === 3) || // Rock beats Scissors
+                (playerChoice === 2 && computerPick === 1) || // Paper beats Rock
+                (playerChoice === 3 && computerPick === 2)    // Scissors beats Paper
+            ) {
+                alert("You win!");
+                win++;
+            } else {
+                alert("You lose!");
+                lose++;
+            }
+
+            // Update the score display
+            updateScores();
+        }
+
+        // Event listeners for each button
+        rockButton.addEventListener('click', () => playGame(1)); // Rock
+        paperButton.addEventListener('click', () => playGame(2)); // Paper
+        scissorButton.addEventListener('click', () => playGame(3)); // Scissors
+
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissor">Scissor</button>
+    <p id="win"></p>
+    <p id="lose"></p>
+    <p id="tie"></p>
+
+
+    <script>
+        // Get the buttons
+        const rockButton = document.getElementById('rock');
+        const paperButton = document.getElementById('paper');
+        const scissorButton = document.getElementById('scissor')
+
+        let lose=0;
+        let win=0;
+        let tie=0;
+
+
+        function updateScore(){
+            document.getElementById('win').innerText = `Total win : ${win}`;
+            document.getElementById('lose').innerText = `Total lose : ${lose}`;
+            document.getElementById('tie').innerText = `Total Tie : ${tie}`;
+        }
+        
+        
+        // 1 - Rock
+        // 2 - Paper
+        // 3 - Scissor
+        
+        updateScore()
+
+        rockButton.addEventListener('click', () => {
+            computer_pick = Math.floor(Math.random() * 3 + 1)
+            if (computer_pick == 1) {
+                alert("It's a tie!");
+                tie+=1;
+            }
+            else if (computer_pick == 2) {
+                alert("Paper covers rock, you lose!");
+                lose+=1;
+            }
+            else if (computer_pick == 3) {
+                alert("Rock crushes scissor, you win!");
+                win+=1;
+            }
+            updateScore()
+        })
+        paperButton.addEventListener('click', () => {
+            computer_pick = Math.floor(Math.random() * 3 + 1)
+            if (computer_pick == 1) {
+                alert( "Paper covers Rock, you win!");
+                win+=1;
+            }
+            else if (computer_pick == 2) {
+                alert( "It's a tie!");
+                tie+=1;
+            }
+            else if (computer_pick == 3) {
+                alert( "Scissors cuts paper, you lose!");
+                lose+=1;
+            }
+            updateScore()
+        })
+        scissorButton.addEventListener('click', () => {
+            computer_pick = Math.floor(Math.random() * 3 + 1)
+            if (computer_pick == 1) {
+                alert( "Rock crushes scissor, you lose!");
+                lose+=1;
+            }
+            else if (computer_pick == 2) {
+                alert( "Scissors cuts paper, you win!");
+                win+=1;
+            }
+            else if (computer_pick == 3) {
+                alert( "It's a tie!");
+                tie+=1;
+            }
+            updateScore()
+        })
+        
+
+    </script>
+
+</body>
+</html>

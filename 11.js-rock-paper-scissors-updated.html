@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissor">Scissor</button>
+    <p class="result"></p>
+    <p class="score"></p>
+    <button id="reset" onclick="score.wins=0,
+                                score.losses=0,
+                                score.ties=0,
+                                localStorage.removeItem('score'); alert('Score is reset'); updateScores()">
+    Reset Score</button>
+    
+
+    <script>
+        // Get the buttons
+        const rockButton = document.getElementById('rock');
+        const paperButton = document.getElementById('paper');
+        const scissorButton = document.getElementById('scissor');
+        const resetButton = document.getElementById('reset')
+
+        const score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0, ties: 0 };
+        console.log(score)
+        // Function to update the score display
+        function updateScores() {
+            document.querySelector('.score').innerText = `Wins : ${score.wins} | Losses : ${score.losses} | Ties : ${score.ties}`;
+        }
+        updateScores()
+        // Function to play the game logic
+        function playGame(playerChoice) {
+            // Generate computer choice: 1 - Rock, 2 - Paper, 3 - Scissors
+            const computerPick = Math.floor(Math.random() * 3) + 1;
+
+            // Logic to determine outcome
+            if (playerChoice === computerPick) {
+                document.querySelector('.result').innerText = "It's a tie!";
+                score.ties++;
+            } else if (
+                (playerChoice === 1 && computerPick === 3) || // Rock beats Scissors
+                (playerChoice === 2 && computerPick === 1) || // Paper beats Rock
+                (playerChoice === 3 && computerPick === 2)    // Scissors beats Paper
+            ) {
+                document.querySelector('.result').innerText = "You win!";
+                score.wins++;
+            } else {
+                document.querySelector('.result').innerText = "You lose!";
+                score.losses++;
+            }
+
+            
+            // Update the score display
+            updateScores();
+            localStorage.setItem('score', JSON.stringify(score))
+        }
+
+        // Event listeners for each button
+        rockButton.addEventListener('click', () => playGame(1)); // Rock
+        paperButton.addEventListener('click', () => playGame(2)); // Paper
+        scissorButton.addEventListener('click', () => playGame(3)); // Scissors
+
+    </script>
+</body>
+</html>

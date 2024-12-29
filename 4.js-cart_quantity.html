@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Quantity</title>
+</head>
+<body>
+    
+    <button id="show-cart" onclick="console.log(`Cart Quantity : ${cart}`);">Show Cart</button>
+
+    <button id="add-cart">Add to Cart</button>
+    <button id="increase-2">+2</button>
+    <button id="increase-3">+3</button>
+    <button id="reset-cart">Reset Cart</button>
+
+    <script>
+        // let show_cart = document.querySelector('#show-cart')
+        let add_cart = document.querySelector('#add-cart')
+        let increase_2 = document.querySelector('#increase-2')
+        let increase_3 = document.querySelector('#increase-3')
+        let reset_cart = document.querySelector('#reset-cart')
+
+        let cart = 0;
+
+        // show_cart.addEventListener( 'click', () => {
+        //     console.log(`Cart Quantity : ${cart}`);
+        // })
+        add_cart.addEventListener( 'click', () => {
+            cart += 1;
+            console.log(`Cart Quantity : ${cart}`);
+        })
+        increase_2.addEventListener( 'click', () => {
+            cart += 2;
+            console.log(`Cart Quantity : ${cart}`);
+        })
+        increase_3.addEventListener( 'click', () => {
+            cart += 3;
+            console.log(`Cart Quantity : ${cart}`);
+        })
+        reset_cart.addEventListener( 'click', () => {
+            cart = 0;
+            console.log('Cart was reset');
+            console.log(`Cart Quantity : ${cart}`);
+        })
+
+    </script>
+</body>
+</html>

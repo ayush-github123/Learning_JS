@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <!-- <script src="todo.js"></script> -->
+     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .input-div, .tasks-list{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .add-task{
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            background-color: lightgreen;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .add-task:hover{
+            background-color: limegreen;
+        }
+        #task-input, #due-Date{
+            padding: 10px 20px;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .tasks-list{
+            margin-top: 20px;
+        }
+
+        .task-item{
+            display: flex;
+            justify-content: space-between;
+            gap:60px;
+            align-items: center;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            /* background-color: #f9f9f9; */
+            font-size: 18px;
+            /* max-width: 300px; */
+            /* margin: 10px auto; */
+        }
+        
+        .delete-task{
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .delete-task:hover{
+            background-color: darkred;
+        }
+
+        /* Optional: Add some styles for the task list container */
+        .tasks-list{
+            padding: 10px;
+            gap:1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+     </style>
+  </head>
+  <body>
+    <h2>Todo List</h2>
+    <div class="input-div">
+        <input
+        type="text"
+        name="task-input"
+        id="task-input"
+        placeholder="Enter the task"
+        />
+        <input type="date" name="dueDate" id="due-Date">
+        <button type="submit" class="add-task">Add</button>
+    </div>
+    <div class="tasks-list">
+      <!-- Task items will appear here -->
+    </div>
+
+    <script>
+      const taskInput = document.querySelector("#task-input");
+      const addButton = document.querySelector(".add-task");
+      const taskListdiv = document.querySelector(".tasks-list");
+      const dueDate = document.querySelector("#due-Date");
+
+      let taskList = [];
+
+      // Function to render tasks
+      function renderTask() {
+        taskListdiv.innerHTML = '';
+
+        for (let i = 0; i < taskList.length; i++) {
+          const taskItem = document.createElement("div");
+          taskItem.classList.add("task-item"); // Add the task-item class for styling
+          taskItem.innerHTML = `${taskList[i].task} - ${taskList[i].date}`;
+          
+          const deleteButton = document.createElement("button");
+          deleteButton.innerText = "Delete";
+          deleteButton.classList.add("delete-task"); // Add the delete-task class for styling
+          
+          // Add event listener for deleting the task
+          deleteButton.addEventListener("click", () => deleteTask(i));
+
+          // Append delete button to task item
+          taskItem.appendChild(deleteButton);
+
+          // Append task item to the task list container
+          taskListdiv.appendChild(taskItem);
+        }
+      }
+
+      // Function to add a new task
+      function addTask() {
+        const task = taskInput.value;
+        const date = dueDate.value;
+        if (task != "" && date != "") {
+          taskList.push({ task, date });
+          renderTask();
+          taskInput.value = "";
+          dueDate.value = "";
+        } else if (task == "") {
+          alert("Please enter a task");
+        } else {
+          alert("Please enter a due date");
+        }
+      }
+
+      // Function to delete a task
+      function deleteTask(index) {
+        taskList.splice(index, 1); // Remove task from array
+        renderTask(); // Re-render the updated list
+      }
+
+      // Event listener for adding tasks
+      addButton.addEventListener("click", addTask);
+    </script>
+  </body>
+</html>

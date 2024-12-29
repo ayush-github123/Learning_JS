@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js DOM</title>
+</head>
+<body>
+    <p>Youtube Subscribe Button</p>
+    <button class="js-buttonElement">Subscribe</button>
+
+    <h2>Amazon Shipping Calculator</h2>
+    <p>If cost < = $40 : $10 Shipping charges</p>
+    <p>If cost > $40 : Free</p>
+    <input type="text" name="cost" id="cost" placeholder="Enter the amount">
+    <button type="submit" id="calculate">Calculate</button>
+    <p class="total-cost"></p>
+    <script>
+        const buttonElement = document.querySelector('.js-buttonElement')
+        buttonElement.addEventListener('click', () => {
+            if(buttonElement.innerText == 'Subscribe'){
+                buttonElement.innerText = 'Subscribed'
+            }
+            else{
+                buttonElement.innerText = 'Subscribe'
+            }
+        })
+
+        const calculateButton = document.querySelector('#calculate')
+        const priceInput = document.querySelector('#cost')
+        const totalCost = document.querySelector('.total-cost')
+        function calculateTotal(){
+            let cost = Number(priceInput.value )
+            if(cost<=40){
+                totalCost.innerText = `$ ${cost+10}`;
+            }
+            else{
+                totalCost.innerText = 'Free'
+            }
+        }
+        
+        calculateButton.addEventListener('click', calculateTotal)
+
+        priceInput.addEventListener('keydown', (event) => {
+            if(event.key == 'Enter'){
+                event.preventDefault()
+                console.log('Enter pressed')
+                calculateTotal()
+            }
+        })
+        
+        </script>
+</body>
+</html>
